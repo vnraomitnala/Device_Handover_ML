@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pickle
 
 
-with open ('C:/Users/Vijaya/PhD/chapter5/SignalDataset/locus_pos_list_20000.pickle', 'rb') as f:
+with open ('locus_pos_list_20000.pickle', 'rb') as f:
      locus_ds = pickle.load(f)
      
 locusDataset = {"locus": [], "travelTime": []}
@@ -61,7 +61,7 @@ for i in range(400):
 locusDataset["locus"] = locus
 locusDataset["travelTime"] = travelTime
 
-with open ('C:/Users/Vijaya/PhD/chapter5/SignalDataset/locusMovement-randum-locus_20000.pickle', 'wb' ) as f:
+with open ('locusMovement-randum-locus_20000.pickle', 'wb' ) as f:
     pickle.dump(locusDataset, f)
      
     

@@ -3,6 +3,8 @@ from scipy.special import comb
 import matplotlib.pyplot as plt
 import pickle
 
+PLOT=False
+
 
 def bernstein_poly(i, n, t):
     return comb(n, i) * ( t**(n-i) ) * (1 - t)**i
@@ -108,20 +110,21 @@ for ii in range(100):
                 k = xpoints[i] + 0.025
                 l = ypoints[i] + 0.025
             points.append([xpoints[i],ypoints[i]])
-            
-        plt.plot(xpoints, ypoints, "ro",label='Original Points')
-        # Get the Bezier parameters based on a degree.
         data = get_bezier_parameters(xpoints, ypoints, degree=3)
         x_val = [x[0] for x in data]
         y_val = [x[1] for x in data]
-        
-        # Plot the control points
-        plt.plot(x_val,y_val,'k--o', label='Control Points')
-        # Plot the resulting Bezier curve
         xvals, yvals = bezier_curve(data, nTimes=50)
-        plt.plot(xvals, yvals, 'b-', label='B Curve')
-        plt.legend()
-        plt.show()    
+
+        if PLOT:
+            plt.plot(xpoints, ypoints, "ro",label='Original Points')
+            # Get the Bezier parameters based on a degree.
+            
+            # Plot the control points
+            plt.plot(x_val,y_val,'k--o', label='Control Points')
+            # Plot the resulting Bezier curve
+            plt.plot(xvals, yvals, 'b-', label='B Curve')
+            plt.legend()
+            plt.show()    
         
         locus = []
         
@@ -137,5 +140,5 @@ def flat_list(test_list):
 
 print(locusFinal)
 
-with open ('C:/Users/Vijaya/PhD/chapter5/SignalDataset/locus_pos_list_20000.pickle', 'wb' ) as f:
+with open ('locus_pos_list_20000.pickle', 'wb' ) as f:
     pickle.dump(locusFinal, f) 
