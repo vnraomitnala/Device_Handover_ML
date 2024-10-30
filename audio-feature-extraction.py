@@ -28,7 +28,7 @@ rt60_tgt = 0.8 # seconds
 
 #str1 = "examples_samples_guitar_16k_latest3.wav"   
 
-directory1 = "audio-2"
+directory1 = "audio"
 
 str_list = []
 
