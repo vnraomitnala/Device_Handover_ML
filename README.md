@@ -53,9 +53,18 @@ locusDataset['travelTime'][10]
 [0.0, 0.2, 0.4, 0.6000000000000001, 0.8, 1.0, 1.2000000000000002, 1.4000000000000001, 1.6, 1.8, 2.0, 2.2, 2.4000000000000004, 2.6, 2.8000000000000003, 3.0, 3.2, 3.4000000000000004, 3.6, 3.8000000000000003, 4.0, 4.2, 4.4, 4.6000000000000005, 4.800000000000001, 5.0, 5.2, 5.4, 5.6000000000000005, 5.800000000000001, 6.0, 6.2, 6.4, 6.6000000000000005, 6.800000000000001, 7.0, 7.2, 7.4, 7.6000000000000005, 7.800000000000001, 8.0, 8.200000000000001, 8.4, 8.6, 8.8, 9.0, 9.200000000000001, 9.4, 9.600000000000001, 9.8]
 ```
 
-## Simulate room with audio (noise soon)
+## Get locus position list that has transitions - TODO (couldn't find the python code doing this)
 
+outputs ```locusMovement-randum-locus-with-transitions.pickle```
 
-```roomSoundSimulator_3D.py```
+## Simulate room with audio and generate the features (noise soon)
+
+uses ```locusMovement-randum-locus-with-transitions.pickle``` and ```audio``` audio files directory - as inputs and generates features
+
+```audio-feature-extraction.py```
+
+outputs ```datasetFinal_random_locus.pickle```   ## audio features
+outputs ```travelTimeDataset_random_locus.pickle```  ## dataset to get the ground truth mic distance from source
+
 
 
