@@ -28,7 +28,7 @@ rt60_tgt = 0.8 # seconds
 
 #str1 = "examples_samples_guitar_16k_latest3.wav"   
 
-directory1 = "audio"
+directory1 = "audio-2"
 
 str_list = []
 
@@ -75,7 +75,7 @@ datasetFinal = []
 travelTimeDataset = []
 
 
-with open ('locusMovement-randum-locus.pickle', 'rb') as f:
+with open ('locusMovement-randum-locus-with-transitions.pickle', 'rb') as f:
     locusDataset = pickle.load(f)
     
 
