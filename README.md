@@ -59,12 +59,26 @@ outputs ```locusMovement-randum-locus-with-transitions.pickle```
 
 ## Simulate room with audio and generate the features (noise soon)
 
-uses ```locusMovement-randum-locus-with-transitions.pickle``` and ```audio``` audio files directory - as inputs and generates features
+uses ```locusMovement-randum-locus-with-transitions.pickle``` and ```audio``` (audio files directory) -- as inputs and generates features
 
 ```audio-feature-extraction.py```
 
-outputs ```datasetFinal_random_locus.pickle```   ## audio features
-outputs ```travelTimeDataset_random_locus.pickle```  ## dataset to get the ground truth mic distance from source
+outputs ```datasetFinal_random_locus.pickle```   -- audio features
+outputs ```travelTimeDataset_random_locus.pickle```  -- dataset to get the ground truth mic distance from source
+
+## Get ground truth distance from source to mic positions based on travel time
+
+uses ```locusMovement-randum-locus-with-transitions.pickle```, ```travelTimeDataset_random_locus.pickle``` and ```audio``` (audio files directory) -- as inputs and generates distance
+
+```groundTruth_distance_mic_calculation.py```
+
+outputs ```distanceDataset_random_move.pickle```   -- distance dataset
+
+## 1D CNN
+
+uses ```datasetFinal_random_locus.pickle```` and ```distanceDataset_random_locus.pickle``` -- as inputs and processes 1DCNN
+
+```ml_1D_CNN.py```
 
 
 
