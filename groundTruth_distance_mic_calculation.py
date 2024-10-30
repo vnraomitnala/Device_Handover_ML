@@ -16,17 +16,12 @@ from scipy.io import wavfile
 import os
 
 
-with open ('locusMovement-randum-locus_with_transition-2.pickle', 'rb') as f:
+with open ('locusMovement-randum-locus-with-transitions.pickle', 'rb') as f:
     locusDataset = pickle.load(f)
 
-with open ('travelTimeDataset_random_locus_dev-clean1-50-200-50-0.8-3.pickle', 'rb') as f:
+with open ('travelTimeDataset_random_locus.pickle', 'rb') as f:
     travelTimeDatasetDatasetFinal = pickle.load(f) 
     
-# =============================================================================
-# with open ('C:/Users/Vijaya/PhD/chapter5/locusMovement-randum-locus.pickle', 'rb') as f:
-#     locusDataset = pickle.load(f)        
-# =============================================================================
-
 def locusThereAndBack(t,start,end,velocity):
     return (start + np.abs(np.abs(signal.sawtooth(np.pi * velocity/(end-start) * t )) - 1) 
             * (end - start))
@@ -38,11 +33,11 @@ standardRoom_mic_locs = [
     [1.5,3.5, 0.9], [6.0,3.5,0.9],  # mic 1  # mic 2
 ]
 
-standardRoom_source_locs = [ [ 0.5 +i*0.12,1, 1.4] for i in range(50) ]
+#standardRoom_source_locs = [ [ 0.5 +i*0.12,1, 1.4] for i in range(50) ]
 
 datasetDistanceFinal = []
 
-directory1 = "dev-clean1-converted-100-2"
+directory1 = "audio-2"
 
 str_list = []
 
@@ -53,16 +48,15 @@ for root, dirs, files in os.walk(directory1):
         str_list.append(file_path)
         
 
-
-for s in range(1):
+for s in range(len(str_list)):
     travelTimeDatasetDataset = travelTimeDatasetDatasetFinal[s]
     datasetDistance_final = []
-    for l in range(1):
+    for l in range(len(locusDataset)):
         #print(velocity_list[l])
         datasetDistance = {"mic": [], "mic1-distance": [], "mic2-distance": []}
         
-        travel_time = locusDataset[0]["travelTime"]
-        locus = standardRoom_source_locs #locusDataset[0]["locus"]
+        travel_time = locusDataset[l]["travelTime"]
+        locus = locusDataset[l]["locus"] #standardRoom_source_locs
         
         #velocity = velocity_list[l]
            
@@ -99,7 +93,7 @@ for s in range(1):
 print(len(datasetDistanceFinal))
 
 
-with open ('distanceDataset_linear_move.pickle', 'wb' ) as f:
+with open ('distanceDataset_random_move.pickle', 'wb' ) as f:
     pickle.dump(datasetDistanceFinal, f) 
 
 
