@@ -15,11 +15,11 @@ from scipy.signal import lfilter
 import soundfile as sf
 from scipy.signal import bilinear
 import colorednoise as cn
-from pyroomacoustics.directivities import (
-    DirectivityPattern,
-    DirectionVector,
-    CardioidFamily,
-)
+#from pyroomacoustics.directivities import (
+#    DirectivityPattern,
+#    DirectionVector,
+#    CardioidFamily,
+#)
 from pyroomacoustics.doa import spher2cart
 from scipy.io import wavfile
 import IPython
@@ -198,9 +198,9 @@ y = cn.powerlaw_psd_gaussian(1, samples,fmin=100/fs)
 
 mic_rotation = 0
 colatitude = 0
-pattern = DirectivityPattern.OMNI
-orientation = DirectionVector(azimuth=mic_rotation, colatitude=colatitude, degrees=True)
-directivity = CardioidFamily(orientation=orientation, pattern_enum=pattern)
+#pattern = DirectivityPattern.OMNI
+#orientation = DirectionVector(azimuth=mic_rotation, colatitude=colatitude, degrees=True)
+#directivity = CardioidFamily(orientation=orientation, pattern_enum=pattern)
 
 rooms = []
 for i in range(len(standardRoom_mic_locs)):
