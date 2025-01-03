@@ -28,7 +28,7 @@ rt60_tgt = 0.8 # seconds
 
 #str1 = "examples_samples_guitar_16k_latest3.wav"   
 
-directory1 = "audio-2"
+directory1 = "audio"
 
 str_list = []
 
@@ -151,14 +151,14 @@ def MfccOncData(indata, num_mfcc):
     b, a = A_weighting(fs)    
     y = lfilter(b, a, indata)
     
-    return (librosa.feature.mfcc(y, samplerate, n_fft=len(y), hop_length=len(y)+1, n_mfcc=num_mfcc))[:,0]
+    return (librosa.feature.mfcc(y=y, sr=samplerate, n_fft=len(y), hop_length=len(y)+1, n_mfcc=num_mfcc))[:,0]
 
 def MelSOncData(indata, num_mels):       
   
     b, a = A_weighting(fs)    
     y = lfilter(b, a, indata)
    
-    return (librosa.feature.melspectrogram(y, samplerate, n_fft=len(y), hop_length=len(y)+1, n_mels=num_mels))[:,0]
+    return (librosa.feature.melspectrogram(y=y, sr=samplerate, n_fft=len(y), hop_length=len(y)+1, n_mels=num_mels))[:,0]
 
 dict_mfcc_keys = ["mic1_mfcc_l", "mic1_mfcc_r", "mic2_mfcc_l", "mic2_mfcc_r", ]
 dict_mels_keys = ["mic1_mels_l", "mic1_mels_r", "mic2_mels_l", "mic2_mels_r"]

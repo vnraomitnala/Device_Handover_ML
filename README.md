@@ -59,9 +59,9 @@ outputs ```locusMovement-randum-locus-with-transitions.pickle```
 
 ## Simulate room with audio and generate the features (noise soon)
 
-uses ```locusMovement-randum-locus-with-transitions.pickle``` and ```audio``` (audio files directory) -- as inputs and generates features
-
 ```audio-feature-extraction.py```
+
+uses ```locusMovement-randum-locus-with-transitions.pickle``` and ```audio``` (audio files directory) -- as inputs and generates features
 
 outputs ```datasetFinal_random_locus.pickle```   -- audio features
 outputs ```travelTimeDataset_random_locus.pickle```  -- dataset to get the ground truth mic distance from source
