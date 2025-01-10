@@ -37,7 +37,7 @@ standardRoom_mic_locs = [
 
 datasetDistanceFinal = []
 
-directory1 = "audio-2"
+directory1 = "audio"
 
 str_list = []
 

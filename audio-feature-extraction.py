@@ -32,6 +32,10 @@ directory1 = "audio"
 
 str_list = []
 
+noise_file = "99.wav"
+noise_attendB = -12 # in dB
+noise_atten = 10 ** (noise_attendB/20) # in absolute scale
+
 # Recursively iterate over the directory and its subdirectories
 for root, dirs, files in os.walk(directory1):
     for file in files:
@@ -40,7 +44,7 @@ for root, dirs, files in os.walk(directory1):
         str_list.append(file_path)
     
 #str_list = [str1] # just for testing purpose
-
+str_list = [str_list[0],str_list[1]] # just for testing purpose
 rt60_tgt = 0.8 # seconds
 
 duration =  13.0
@@ -55,6 +59,8 @@ end = 6
 yy = 1
 zz = 1.4
 #velocity = 1
+
+noise_position = [3.5,2.75,1.4] # in the middle of the room for starters
 
 standard_room_dim = [7,5.5,2.4]  # meters
 
@@ -220,6 +226,7 @@ for i in range(len(standardRoom_mic_locs)):
     
 #standardRoom_source_locs = [ [ 0.5 +i*0.06,1, 1.4] for i in range(100) ]
 
+noise = fs, audio = wavfile.read(audio_sig)
    
 for s in range(len(str_list)): 
     print(s)
@@ -234,7 +241,7 @@ for s in range(len(str_list)):
     audio_length = len(audio)/fs
     
     start_window =  int(0.1 * fs)
-    
+    # these are not used
     audio1= np.hanning(start_window * 2)[0:start_window] * audio[0:start_window]   
     audio2 = np.hanning(start_window * 2)[-start_window:] * audio[-start_window:]   
     
@@ -287,21 +294,26 @@ for s in range(len(str_list)):
                     maxSample = len(audio)        
                 else:
                     maxSample = np.floor(travel_time[t] * fs).astype(np.int32)
-
+                noise_sig = noise[minSample  : maxSample]
                 sig = audio[minSample  : maxSample]    
         
                 if j > 0:
-                    overlapped_sig = previous_sig[-overlap:]           
+                    overlapped_sig = previous_sig[-overlap:]
+                    overlapped_noise_sig previous_noise_sig[-overlap:]
                     sig = np.append(overlapped_sig, sig)
+                    noise_sig = np.append(overlapped_noise_sig,noise_sig)
         
                 previous_sig = sig
-        
+                previous_noise_sig = noise_sig
+
                 sig = np.hanning(len(sig))*sig
                 sig = librosa.util.fix_length(sig,size=(len(sig) + extraTime))
                 
-                
+                noise_sig = np.hanning(len(noise_sig))*noise_sig
+                noise_sig = librosa.util.fix_length(noise_sig,size=(len(noise_sig) + extraTime))
         
-                room.add_source(locus[j], signal=sig)     
+                room.add_source(locus[j], signal=sig)
+                room.add_source(noise_position,signal=noise_sig)
                 room.simulate()
                 
                 #room.compute_rir() 

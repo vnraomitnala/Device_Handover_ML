@@ -66,6 +66,11 @@ uses ```locusMovement-randum-locus-with-transitions.pickle``` and ```audio``` (a
 outputs ```datasetFinal_random_locus.pickle```   -- audio features
 outputs ```travelTimeDataset_random_locus.pickle```  -- dataset to get the ground truth mic distance from source
 
+Got this far 20250110
+TEMPNOTE: Tested up to here (just waiting for run)
+Also modified to add a static noise source in the middle of the room (using 99.wav) with -12dB relative amplitude to the normal 99.wave signal (it should calculate relative amplitude each time based upon input signal) - but this was not tested!!!!
+
+
 ## Get ground truth distance from source to mic positions based on travel time
 
 uses ```locusMovement-randum-locus-with-transitions.pickle```, ```travelTimeDataset_random_locus.pickle``` and ```audio``` (audio files directory) -- as inputs and generates distance
