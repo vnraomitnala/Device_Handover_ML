@@ -22,18 +22,14 @@ silence_threshold = 0.01
 def convert_to_wav_file_with_fixed_duration(input_file, output_file):
     speech_signal, original_sampling_rate = sf.read(input_file)
 
-# Resample the speech signal to the desired sampling rate
     resampled_signal = resample(speech_signal, int(len(speech_signal) * output_sampling_rate / original_sampling_rate))
 
     non_silent_indices = np.where(np.abs(resampled_signal) > silence_threshold)[0]
 
-    # Compute the differences between consecutive indices
     diffs = np.diff(non_silent_indices)
 
-# Find the indices where consecutive differences are greater than 1 (indicating gaps)
     gap_indices = np.where(diffs > 1)[0]
 
-# Initialize a list to store the non-silent segments
     non_silent_segments = []
 
 # Iterate over the gap indices and extract non-silent segments
@@ -74,7 +70,7 @@ def convert_to_wav_file_with_fixed_duration(input_file, output_file):
     sf.write(new_file_name, extended_signal, output_sampling_rate )
 
 
-directory = "C:/Users/Vijaya/Documents/MobaXterm/home/chapter5/dev-clean"
+directory = "audio"
 
 k = 0
 
@@ -89,7 +85,7 @@ for root, dirs, files in os.walk(directory):
         str2 = os.path.join(root, file)  
         #print(str2)
         ss =  f'{k}'
-        str3 = "dev-clean1-converted"
+        str3 = "audio-converted"
         str4 = str3 +"/" + ss
         os.makedirs(str3, exist_ok = True) 
         if (str2.find('.flac') != -1 ):        
