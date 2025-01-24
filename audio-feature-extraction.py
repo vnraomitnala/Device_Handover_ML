@@ -42,10 +42,18 @@ for root, dirs, files in os.walk(directory1):
         
         file_path = os.path.join(root, file)
         str_list.append(file_path)
+with open ('locusMovement-randum-locus-with-transitions.pickle', 'rb') as f:
+    locusDataset = pickle.load(f)
+
     
+########## MJREED WARNING CHANGED FOR TESTING START ######
 #str_list = [str1] # just for testing purpose
 #str_list = [str_list[0],str_list[1]] # just for testing purpose
 str_list = [str_list[0]] # just for testing purpose
+
+locusDataset=[locusDataset[0],locusDataset[1]] ## only for testing
+########## MJREED WARNING CHANGED FOR TESTING END ######
+
 rt60_tgt = 0.8 # seconds
 
 duration =  13.0
@@ -82,11 +90,7 @@ datasetFinal = []
 travelTimeDataset = []
 
 
-with open ('locusMovement-randum-locus-with-transitions.pickle', 'rb') as f:
-    locusDataset = pickle.load(f)
     
-
-locusDataset = 
 blockLength =  2**14
 
 n_mfcc = 13
