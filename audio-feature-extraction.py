@@ -232,7 +232,7 @@ for i in range(len(standardRoom_mic_locs)):
     
 #standardRoom_source_locs = [ [ 0.5 +i*0.06,1, 1.4] for i in range(100) ]
 
-noise = fs, audio = wavfile.read(audio_sig)
+fs, noise  = wavfile.read(noise_file)
    
 for s in range(len(str_list)): 
     print(s)
@@ -305,7 +305,7 @@ for s in range(len(str_list)):
         
                 if j > 0:
                     overlapped_sig = previous_sig[-overlap:]
-                    overlapped_noise_sig previous_noise_sig[-overlap:]
+                    overlapped_noise_sig=previous_noise_sig[-overlap:]
                     sig = np.append(overlapped_sig, sig)
                     noise_sig = np.append(overlapped_noise_sig,noise_sig)
         
@@ -489,8 +489,8 @@ for s in range(len(str_list)):
                 k= k+1   
                 travelTime_Dataset.append(travel_time[t])
             
-           # wavfile.write("tabletop01-latest.wav", room.fs, (final_mic1).T.astype(np.int16))
-           # wavfile.write("tabletop02-latest.wav", room.fs, (final_mic2).T.astype(np.int16))
+            wavfile.write("tabletop01-latest-whole-audio.wav", room.fs, (final_mic1).T.astype(np.int16))
+            wavfile.write("tabletop02-latest-whole-audio.wav", room.fs, (final_mic2).T.astype(np.int16))
             
         SAMPLE_RATE = 16000
         
