@@ -33,7 +33,7 @@ directory1 = "audio"
 str_list = []
 
 noise_file = "99.wav"
-noise_attendB = -12 # in dB
+noise_attendB = -6 # in dB
 noise_atten = 10 ** (noise_attendB/20) # in absolute scale
 
 # Recursively iterate over the directory and its subdirectories
@@ -49,9 +49,9 @@ with open ('locusMovement-randum-locus-with-transitions.pickle', 'rb') as f:
 ########## MJREED WARNING CHANGED FOR TESTING START ######
 #str_list = [str1] # just for testing purpose
 #str_list = [str_list[0],str_list[1]] # just for testing purpose
-str_list = [str_list[0]] # just for testing purpose
+#str_list = [str_list[0]] # just for testing purpose
 
-locusDataset=[locusDataset[0],locusDataset[1]] ## only for testing
+#locusDataset=[locusDataset[0],locusDataset[1]] ## only for testing
 ########## MJREED WARNING CHANGED FOR TESTING END ######
 
 rt60_tgt = 0.8 # seconds
@@ -232,8 +232,9 @@ for i in range(len(standardRoom_mic_locs)):
     
 #standardRoom_source_locs = [ [ 0.5 +i*0.06,1, 1.4] for i in range(100) ]
 
-fs, noise  = wavfile.read(noise_file)
-   
+fs, noisefull  = wavfile.read(noise_file)
+
+
 for s in range(len(str_list)): 
     print(s)
     dataset_Final = []
@@ -242,8 +243,13 @@ for s in range(len(str_list)):
     
     fs, audio = wavfile.read(audio_sig)
     #audio = y # this is for pink noise signal
+    audio_amp = np.sqrt(np.mean(np.array(audio, dtype=np.int32)**2))
+    noisefull_amp = np.sqrt(np.mean(np.array(noisefull, dtype=np.int32)**2))
     
-    
+    noise = (noisefull * (noise_atten * audio_amp/noisefull_amp)).astype(noisefull.dtype)
+    noise_amp = np.sqrt(np.mean(np.array(noise, dtype=np.int32)**2))
+
+
     audio_length = len(audio)/fs
     
     start_window =  int(0.1 * fs)
