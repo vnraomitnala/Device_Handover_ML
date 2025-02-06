@@ -23,7 +23,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.layers import LSTM
 from sklearn.preprocessing import MinMaxScaler
-from keras.preprocessing.sequence import TimeseriesGenerator
 
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import mean_squared_error

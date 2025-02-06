@@ -63,16 +63,16 @@ for s in range(len(str_list)):
         for i in range(len(locus)):
             for t in range(len(travel_time)-1):
                 if travel_time[i] == travelTimeDatasetDataset[t]:
-                    print("passing")
+                    #print("passing")
                     mic1_distance = 0.0
                     mic2_distance = 0.0
                     for j in range(len(standardRoom_mic_locs)):
                         if j == 0:
-                           print(standardRoom_mic_locs[j][0])
+                           #print(standardRoom_mic_locs[j][0])
                            mic1_distance = math.dist(locus[i] , standardRoom_mic_locs[j]) # compare 3D values than 1D
                            datasetDistance["mic1-distance"].append(round(mic1_distance,2))
                         else:
-                            print(standardRoom_mic_locs[j][0])                   
+                            #print(standardRoom_mic_locs[j][0])                   
                             mic2_distance = math.dist(locus[i], standardRoom_mic_locs[j])
                             datasetDistance["mic2-distance"].append(round(mic2_distance,2))
                             

@@ -70,6 +70,9 @@ Got this far 20250110
 TEMPNOTE: Tested up to here (just waiting for run)
 Also modified to add a static noise source in the middle of the room (using 99.wav) with -12dB relative amplitude to the normal 99.wave signal (it should calculate relative amplitude each time based upon input signal) - but this was not tested!!!!
 
+Results:
+### 20250130 -12db noise (99.wav) 99 audio files, 200 loci each with 49 steps
+
 
 ## Get ground truth distance from source to mic positions based on travel time
 

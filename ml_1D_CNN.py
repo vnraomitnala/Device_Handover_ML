@@ -23,7 +23,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.layers import LSTM
 from sklearn.preprocessing import MinMaxScaler
-from keras.preprocessing.sequence import TimeseriesGenerator
 
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.metrics import mean_squared_error
@@ -40,8 +39,10 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Flatten
 from keras.layers import Dropout
-from keras.layers.convolutional import Conv1D
-from keras.layers.convolutional import MaxPooling1D
+#from keras.layers.convolutional import Conv1D
+from tensorflow.keras.layers import Conv1D
+#from keras.layers.convolutional import MaxPooling1D
+from tensorflow.keras.layers import MaxPooling1D
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
@@ -92,7 +93,7 @@ def flat_list_n_items(indata):
 with open ('datasetFinal_random_locus.pickle', 'rb') as f:
      audio_features_dataset_10_locus_1 = pickle.load(f)                
 
-with open ('distanceDataset_random_locus.pickle', 'rb') as f:
+with open ('distanceDataset_random_move.pickle', 'rb') as f:
      distance_dataset_10_locus_1 = pickle.load(f)
      
 # =============================================================================
