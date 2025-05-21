@@ -23,7 +23,7 @@ his noise suppression algorithm.
  
 # Notes on running code
 
-running on 192.168.6.93 at the moment
+running on 192.168.6.93 at the moment and 192.168.6.92 at the moment
 
 ## Create curve points from Bezier Curve
 
