@@ -90,5 +90,6 @@ uses ```datasetFinal_random_locus.pickle```` and ```distanceDataset_random_locus
 
 ```ml_1D_CNN.py```
 
+20250618: Running this last step on 192.168.6.92 using conda activate /home/mjreed/miniconda3/envs/tf
 
 
