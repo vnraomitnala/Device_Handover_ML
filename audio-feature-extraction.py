@@ -33,7 +33,7 @@ directory1 = "audio"
 str_list = []
 
 noise_file = "99.wav"
-noise_attendB = -6 # in dB
+noise_attendB = -120 # in dB
 noise_atten = 10 ** (noise_attendB/20) # in absolute scale
 
 # Recursively iterate over the directory and its subdirectories

@@ -68,9 +68,7 @@ uses ```locusMovement-randum-locus-with-transitions.pickle``` and ```audio``` (a
 outputs ```datasetFinal_random_locus.pickle```   -- audio features
 outputs ```travelTimeDataset_random_locus.pickle```  -- dataset to get the ground truth mic distance from source
 
-Got this far 20250110
-TEMPNOTE: Tested up to here (just waiting for run)
-Also modified to add a static noise source in the middle of the room (using 99.wav) with -12dB relative amplitude to the normal 99.wave signal (it should calculate relative amplitude each time based upon input signal) - but this was not tested!!!!
+Modified to add a static noise source in the middle of the room (using 99.wav) with -12dB relative amplitude to the normal 99.wave signal (it should calculate relative amplitude each time based upon input signal) - but this was not tested!!!!
 
 Results:
 ### 20250130 -12db noise (99.wav) 99 audio files, 200 loci each with 49 steps
@@ -90,6 +88,12 @@ uses ```datasetFinal_random_locus.pickle```` and ```distanceDataset_random_locus
 
 ```ml_1D_CNN.py```
 
-20250618: Running this last step on 192.168.6.92 using conda activate /home/mjreed/miniconda3/envs/tf
 
+## Putting it all together
+
+As a single pipeline:
+
+```run-it.sh```
+
+20250626: Running this last step on 192.168.6.92 using conda activate /home/mjreed/miniconda3/envs/tf
 
