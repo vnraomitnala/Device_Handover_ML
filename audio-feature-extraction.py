@@ -249,7 +249,6 @@ for s in range(len(str_list)):
     noise = (noisefull * (noise_atten * audio_amp/noisefull_amp)).astype(noisefull.dtype)
     noise_amp = np.sqrt(np.mean(np.array(noise, dtype=np.int32)**2))
 
-
     audio_length = len(audio)/fs
     
     start_window =  int(0.1 * fs)
@@ -325,7 +324,7 @@ for s in range(len(str_list)):
                 noise_sig = librosa.util.fix_length(noise_sig,size=(len(noise_sig) + extraTime))
         
                 room.add_source(locus[j], signal=sig)
-                room.add_source(noise_position,signal=noise_sig)
+                #room.add_source(noise_position,signal=noise_sig)
                 room.simulate()
                 
                 #room.compute_rir() 
