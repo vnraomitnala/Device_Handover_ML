@@ -74,7 +74,7 @@ noise_position = [3.5,2.75,1.4] # in the middle of the room for starters
 standard_room_dim = [7,5.5,2.4]  # meters
 
 standardRoom_mic_locs = [
-    [1.5,3.5, 0.9], [6.0,3.5,0.9],  # mic 1  # mic 2
+    [1.0,3.5, 0.9], [5.5,3.5,0.9],  # mic 1  # mic 2
 ]
 
 num_mic_arrays = 2
